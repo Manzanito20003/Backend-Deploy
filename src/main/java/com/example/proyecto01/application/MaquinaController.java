@@ -15,6 +15,8 @@ import com.example.proyecto01.infrastracture.ProductoRepository;
 import java.util.List;
 import java.util.Optional;
 @RestController
+@CrossOrigin(origins = "http://localhost:19006")
+
 @RequestMapping("/maquina")
 public class MaquinaController {
     @Autowired

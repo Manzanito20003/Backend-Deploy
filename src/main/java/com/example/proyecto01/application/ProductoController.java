@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @RestController
+@CrossOrigin(origins = "http://localhost:19006")
+
 @RequestMapping("/producto")
 public class ProductoController {
     @Autowired
@@ -44,6 +46,12 @@ public class ProductoController {
         return patchedProducto.isPresent() ? ResponseEntity.status(200).body("Updated partially") :
                 ResponseEntity.status(404).body("Not Found");
 
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
+        Optional<Producto> producto = productoService.getProductoById(id);
+        return producto.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")

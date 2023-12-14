@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" }, allowSetters = true)
-@Table(name = "snack")
+@Table(name = "snack",schema = "public")
 public class Snack extends Producto{
 
     //atributos
